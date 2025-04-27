@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
   return res.status(200).json({ message: 'response from default slash route' });
 });
 
+app.post('/signup', (req, res) => {
+  return res.status(200).json({ message: 'Signup route' });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
 });
