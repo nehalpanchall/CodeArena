@@ -11,6 +11,7 @@ const PORT = process.env.PORT ?? 3300;
 app.use(express.json()); // parse JSON data
 app.use(cookieParser()); // allow cookies
 app.use(express.urlencoded({ extended: true })); // parse URL encoded data
+app.use(cors({ origin: 'your frontend urls', credentials: true }));
 
 app.get('/', (req, res) => {
   return res.status(200).json({ message: 'response from default slash route' });
