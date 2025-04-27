@@ -42,6 +42,10 @@ build/Release
 node_modules/
 jspm_packages/
 
+
+# Ignore Prisma generated client
+src/generated/
+
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
