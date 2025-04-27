@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import authRoute from './src/routes/auth.routes.js';
 
 dotenv.config();
 
@@ -17,9 +18,7 @@ app.get('/', (req, res) => {
   return res.status(200).json({ message: 'response from default slash route' });
 });
 
-app.post('/signup', (req, res) => {
-  return res.status(200).json({ message: 'Signup route' });
-});
+app.use('/auth/v1/api', authRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
