@@ -3,6 +3,11 @@ const userRegistration = async (req, res) => {
   const { name, email, password } = req.body;
 
   // 2. validate data
+  if (!name || !email || !password) {
+    return res
+      .status(400)
+      .json({ message: 'user credentials are required', success: false });
+  }
   // 3. check user exist or not in db
   // 4. if not exist, create new user in db
   // 5. generate random token
