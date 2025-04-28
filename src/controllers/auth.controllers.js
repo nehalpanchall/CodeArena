@@ -1,5 +1,7 @@
 const userRegistration = async (req, res) => {
   // 1. get the data from body
+  const { name, email, password } = req.body;
+
   // 2. validate data
   // 3. check user exist or not in db
   // 4. if not exist, create new user in db
