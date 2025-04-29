@@ -1,4 +1,5 @@
 import prisma from '../../prisma/index.js';
+import crypto from 'crypto';
 
 const userRegistration = async (req, res) => {
   // 1. get the data from body
@@ -25,7 +26,10 @@ const userRegistration = async (req, res) => {
     const newUser = await prisma.user.create({
       data: { name, email, password },
     });
+
     // 5. generate random token
+    const token = crypto.randomBytes(16).toString('hex');
+
     // 6. store token in db
     // 7. send token to user via email
     // 8. return success message
