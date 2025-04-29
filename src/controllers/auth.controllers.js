@@ -43,7 +43,11 @@ const userRegistration = async (req, res) => {
     });
 
     // 7. send token to user via email
+
     // 8. return success message
+    return res
+      .status(200)
+      .json({ message: 'user created successfully', success: true });
   } catch (error) {}
 };
 
