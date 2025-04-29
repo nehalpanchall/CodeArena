@@ -22,6 +22,9 @@ const userRegistration = async (req, res) => {
     }
 
     // 4. if not exist, create new user in db
+    const newUser = await prisma.user.create({
+      data: { name, email, password },
+    });
     // 5. generate random token
     // 6. store token in db
     // 7. send token to user via email
