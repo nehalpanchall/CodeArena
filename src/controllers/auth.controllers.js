@@ -37,6 +37,11 @@ const userRegistration = async (req, res) => {
     }
 
     // 6. store token in db
+    await prisma.user.update({
+      where: { email },
+      data: { verificationToken: token },
+    });
+
     // 7. send token to user via email
     // 8. return success message
   } catch (error) {}
