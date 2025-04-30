@@ -90,7 +90,11 @@ const userVerification = async (req, res) => {
       where: { id: existingUser.id }, // any @unique field
       data: { isVerified: true, verificationToken: null },
     });
+
     // 5. return success reponse
+    return res
+      .status(200)
+      .json({ message: 'user verified successfully', success: true });
   } catch (error) {}
 };
 
