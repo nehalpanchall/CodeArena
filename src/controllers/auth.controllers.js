@@ -140,6 +140,13 @@ const userLogin = async (req, res) => {
     }
 
     // 5. check user is verified
+    if (!existingUser.isVerified) {
+      return res.status(401).json({
+        message: 'user verification is required before login',
+        success: false,
+      });
+    }
+
     // 6. generate jwt token
     // 7. set jwt token in cookie
     // 8. return success response with data
