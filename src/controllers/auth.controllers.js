@@ -2,6 +2,7 @@ import prisma from '../../prisma/index.js';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const userRegistration = async (req, res) => {
   // 1. get the data from body
@@ -148,6 +149,12 @@ const userLogin = async (req, res) => {
     }
 
     // 6. generate jwt token
+    const token = jwt.sign(
+      { id: existingUser.id, role: existingUser.role },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRIES_IN }
+    );
+
     // 7. set jwt token in cookie
     // 8. return success response with data
   } catch (error) {}
