@@ -79,9 +79,15 @@ const userVerification = async (req, res) => {
     return res.status(401).json({ message: 'invalid token', success: false });
   }
 
-  // 3. find the user from db based on token
-  // 4. update the fields in user db
-  // 5. return success reponse
+  try {
+    // 3. find the user from db based on token
+    const existingUser = await prisma.user.findFirst({
+      where: { verificationToken: token },
+    });
+
+    // 4. update the fields in user db
+    // 5. return success reponse
+  } catch (error) {}
 };
 
 export { userRegistration, userVerification };
