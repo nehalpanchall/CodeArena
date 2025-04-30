@@ -61,6 +61,8 @@ const userRegistration = async (req, res) => {
       text: `Hello ${newUser.name}, Welcome to codearena portal \n Please click the given link to verify your identity: ${process.env.BASE_URL}/${token}`,
     };
 
+    await transporter.sendMail(mailOptions);
+
     // 8. return success message
     return res
       .status(200)
