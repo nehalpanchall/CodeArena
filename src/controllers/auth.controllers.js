@@ -1,5 +1,6 @@
 import prisma from '../../prisma/index.js';
 import crypto from 'crypto';
+import nodemailer from 'nodemailer';
 
 const userRegistration = async (req, res) => {
   // 1. get the data from body
@@ -43,6 +44,15 @@ const userRegistration = async (req, res) => {
     });
 
     // 7. send token to user via email
+    const transporter = nodemailer.createTransport({
+      host: process.env.MAILTRAP_HOST,
+      port: process.env.MAILTRAP_PORT,
+      secure: false, // true for port 465, false for other ports
+      auth: {
+        user: process.env.MAILTRAP_USER,
+        pass: process.env.MAILTRAP_PASSWORD,
+      },
+    });
 
     // 8. return success message
     return res
