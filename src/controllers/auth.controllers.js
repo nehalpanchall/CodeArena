@@ -156,6 +156,14 @@ const userLogin = async (req, res) => {
     );
 
     // 7. set jwt token in cookie
+    const cookieOptions = {
+      httpOnly: true, // cookie in backend control
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000, // 24h
+    };
+
+    res.cookie('jwtToken', token, cookieOptions);
+
     // 8. return success response with data
   } catch (error) {}
 };
