@@ -58,7 +58,7 @@ const userRegistration = async (req, res) => {
       from: process.env.NODEMAIL_SENDER, // sender address
       to: newUser.email, // list of receivers
       subject: 'User verification required! ✔', // Subject line
-      text: `Hello ${newUser.name}, Welcome to codearena portal \n Please click the given link to verify your identity: ${process.env.BASE_URL}/verification/${token}`,
+      text: `Hello ${newUser.name}, Welcome to codearena portal \n Please click the given link to verify your identity: ${process.env.BASE_URL}/auth/v1/api/verification/${token}`,
     };
 
     await transporter.sendMail(mailOptions);
