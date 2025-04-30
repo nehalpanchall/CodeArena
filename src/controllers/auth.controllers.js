@@ -165,6 +165,17 @@ const userLogin = async (req, res) => {
     res.cookie('jwtToken', token, cookieOptions);
 
     // 8. return success response with data
+    return res.status(200).json({
+      message: 'user logged in successfully',
+      success: true,
+      token,
+      user: {
+        id: existingUser.id,
+        role: existingUser.role,
+        name: existingUser.name,
+        email: existingUser.email,
+      },
+    });
   } catch (error) {}
 };
 
