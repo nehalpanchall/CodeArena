@@ -107,4 +107,6 @@ const userVerification = async (req, res) => {
   } catch (error) {}
 };
 
-export { userRegistration, userVerification };
+const userLogin = async (req, res) => {};
+
+export { userRegistration, userVerification, userLogin };
