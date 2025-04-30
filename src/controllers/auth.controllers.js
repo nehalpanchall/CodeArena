@@ -86,6 +86,10 @@ const userVerification = async (req, res) => {
     });
 
     // 4. update the fields in user db
+    await prisma.user.update({
+      where: { id: existingUser.id }, // any @unique field
+      data: { isVerified: true, verificationToken: null },
+    });
     // 5. return success reponse
   } catch (error) {}
 };
