@@ -54,6 +54,13 @@ const userRegistration = async (req, res) => {
       },
     });
 
+    const mailOptions = {
+      from: process.env.NODEMAIL_SENDER, // sender address
+      to: newUser.email, // list of receivers
+      subject: 'User verification required! ✔', // Subject line
+      text: `Hello ${newUser.name}, Welcome to codearena portal \n Please click the given link to verify your identity: ${process.env.BASE_URL}/${token}`,
+    };
+
     // 8. return success message
     return res
       .status(200)
