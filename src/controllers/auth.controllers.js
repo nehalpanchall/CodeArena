@@ -72,6 +72,8 @@ const userRegistration = async (req, res) => {
 
 const userVerification = async (req, res) => {
   // 1. get the token from req.params
+  const { token } = req.params; // req.params.token
+
   // 2. verify token
   // 3. if valid, update isVerified to true in db
   // 4. set verificationToken to undefined
