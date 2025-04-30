@@ -85,6 +85,10 @@ const userVerification = async (req, res) => {
       where: { verificationToken: token },
     });
 
+    if (!existingUser) {
+      return res.status(401).json({ message: 'invalid token', success: false });
+    }
+
     // 4. update the fields in user db
     await prisma.user.update({
       where: { id: existingUser.id }, // any @unique field
