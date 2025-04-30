@@ -1,6 +1,7 @@
 import prisma from '../../prisma/index.js';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
+import bcrypt from 'bcrypt';
 
 const userRegistration = async (req, res) => {
   // 1. get the data from body
@@ -23,9 +24,13 @@ const userRegistration = async (req, res) => {
         .json({ message: 'user already exist', success: false });
     }
 
+    // hashed string password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     // 4. if not exist, create new user in db
     const newUser = await prisma.user.create({
-      data: { name, email, password },
+      data: { name, email, password: hashedPassword },
     });
 
     // 5. generate random token
