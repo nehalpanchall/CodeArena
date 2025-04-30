@@ -107,6 +107,15 @@ const userVerification = async (req, res) => {
   } catch (error) {}
 };
 
-const userLogin = async (req, res) => {};
+const userLogin = async (req, res) => {
+  // 1. get the data from body
+  // 2. validate data
+  // 3. check email in db
+  // 4. check password is correct
+  // 5. check user is verified
+  // 6. generate jwt token
+  // 7. set jwt token in cookie
+  // 8. return success response with data
+};
 
 export { userRegistration, userVerification, userLogin };
