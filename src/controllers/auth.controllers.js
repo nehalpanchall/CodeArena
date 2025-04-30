@@ -109,13 +109,33 @@ const userVerification = async (req, res) => {
 
 const userLogin = async (req, res) => {
   // 1. get the data from body
+  const { email, password } = req.body;
+
+  console.log(email, password);
+
   // 2. validate data
-  // 3. check email in db
-  // 4. check password is correct
-  // 5. check user is verified
-  // 6. generate jwt token
-  // 7. set jwt token in cookie
-  // 8. return success response with data
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ message: 'invalid credentials, try again', success: false });
+  }
+
+  try {
+    // 3. check email in db
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+
+    if (!existingUser) {
+      return res
+        .status(400)
+        .json({ message: 'user does not exist', success: false });
+    }
+
+    // 4. check password is correct
+    // 5. check user is verified
+    // 6. generate jwt token
+    // 7. set jwt token in cookie
+    // 8. return success response with data
+  } catch (error) {}
 };
 
 export { userRegistration, userVerification, userLogin };
