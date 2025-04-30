@@ -75,6 +75,9 @@ const userVerification = async (req, res) => {
   const { token } = req.params; // req.params.token
 
   // 2. verify token
+  if (!token) {
+    return res.status(401).json({ message: 'invalid token', success: false });
+  }
   // 3. if valid, update isVerified to true in db
   // 4. set verificationToken to undefined
   // 5. return success response
