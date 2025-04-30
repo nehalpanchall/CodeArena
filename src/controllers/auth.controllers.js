@@ -70,4 +70,6 @@ const userRegistration = async (req, res) => {
   } catch (error) {}
 };
 
-export { userRegistration };
+const userVerification = async (req, res) => {};
+
+export { userRegistration, userVerification };
