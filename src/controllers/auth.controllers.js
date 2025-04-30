@@ -131,6 +131,14 @@ const userLogin = async (req, res) => {
     }
 
     // 4. check password is correct
+    const isMatch = bcrypt.compare(password, existingUser.password);
+
+    if (!isMatch) {
+      return res
+        .status(401)
+        .json({ message: 'incorrect password', success: false });
+    }
+
     // 5. check user is verified
     // 6. generate jwt token
     // 7. set jwt token in cookie
