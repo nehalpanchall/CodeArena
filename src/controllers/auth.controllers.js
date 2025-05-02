@@ -176,6 +176,10 @@ const userLogin = async (req, res) => {
   } catch (error) {}
 };
 
-const userProfile = async (req, res) => {};
+const userProfile = async (req, res) => {
+  console.log(req.user);
+
+  return res.json({});
+};
 
 export { userRegistration, userVerification, userLogin, userProfile };
