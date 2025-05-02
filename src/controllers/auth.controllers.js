@@ -180,12 +180,14 @@ const userProfile = async (req, res) => {
   // 1. get the user object from req
   const user = req.user;
 
+  // 2. validate user object
   if (!user) {
     return res.status(400).json({ message: 'user not found', success: false });
   }
 
-  // 2. validate user object
   // 3. extract user id from user object
+  const { id } = user;
+
   // 4. find the user from db base on user id
   // 5. print all the user data
   // 6. return success response
