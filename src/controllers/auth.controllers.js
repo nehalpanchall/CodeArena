@@ -188,9 +188,13 @@ const userProfile = async (req, res) => {
   // 3. extract user id from user object
   const { id } = user;
 
-  // 4. find the user from db base on user id
-  // 5. print all the user data
-  // 6. return success response
+  try {
+    // 4. find the user from db based on user id
+    const user = await prisma.user.findFirst({ where: { id } });
+
+    // 5. print all the user data
+    // 6. return success response
+  } catch (error) {}
 };
 
 export { userRegistration, userVerification, userLogin, userProfile };
