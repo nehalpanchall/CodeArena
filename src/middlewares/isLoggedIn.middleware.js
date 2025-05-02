@@ -14,7 +14,10 @@ const isLoggedIn = async (req, res) => {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     // 4. inject the decoded token object into req object
+    req.user = decodedToken;
+
     // 5. next flag
+    next();
   } catch (error) {}
 };
 
