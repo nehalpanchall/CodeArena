@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+
 const isLoggedIn = async (req, res) => {
   try {
     // 1. get get jwtToken from req object
@@ -9,6 +11,8 @@ const isLoggedIn = async (req, res) => {
     }
 
     // 3. if valid token, decode the token
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+
     // 4. inject the decoded token object into req object
     // 5. next flag
   } catch (error) {}
