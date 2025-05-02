@@ -192,8 +192,11 @@ const userProfile = async (req, res) => {
     // 4. find the user from db based on user id
     const user = await prisma.user.findFirst({ where: { id } });
 
-    // 5. print all the user data
-    // 6. return success response
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: 'user fond found', success: false });
+    }
   } catch (error) {}
 };
 
