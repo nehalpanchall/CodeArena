@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const isLoggedIn = async (req, res) => {
+const isLoggedIn = async (req, res, next) => {
   try {
     // 1. get get jwtToken from req object
     const token = req.cookies?.jwtToken;
