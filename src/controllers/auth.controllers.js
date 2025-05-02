@@ -177,9 +177,12 @@ const userLogin = async (req, res) => {
 };
 
 const userProfile = async (req, res) => {
-  console.log(req.user);
-
-  return res.json({});
+  // 1. get the user object from req
+  // 2. validate user object
+  // 3. extract user id from user object
+  // 4. find the user from db base on user id
+  // 5. print all the user data
+  // 6. return success response
 };
 
 export { userRegistration, userVerification, userLogin, userProfile };
