@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   userLogin,
+  userLogout,
   userProfile,
   userRegistration,
   userVerification,
@@ -15,5 +16,6 @@ authRoute.post('/verification/:token', userVerification);
 authRoute.post('/login', userLogin);
 
 authRoute.get('/profile', isLoggedIn, userProfile);
+authRoute.get('/logout', isLoggedIn, userLogout);
 
 export default authRoute;

@@ -214,4 +214,12 @@ const userProfile = async (req, res) => {
   } catch (error) {}
 };
 
-export { userRegistration, userVerification, userLogin, userProfile };
+const userLogout = async (req, res) => {};
+
+export {
+  userRegistration,
+  userVerification,
+  userLogin,
+  userProfile,
+  userLogout,
+};
