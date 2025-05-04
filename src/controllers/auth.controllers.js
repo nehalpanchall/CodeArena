@@ -237,10 +237,13 @@ const userLogout = async (req, res) => {
   } catch (error) {}
 };
 
+const forgotPassword = async (req, res) => {};
+
 export {
   userRegistration,
   userVerification,
   userLogin,
   userProfile,
   userLogout,
+  forgotPassword,
 };
