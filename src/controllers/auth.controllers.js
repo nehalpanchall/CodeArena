@@ -239,7 +239,13 @@ const userLogout = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
   // 1. extract email from body
+  const { email } = req.body;
+
   // 2. validate email
+  if (!email) {
+    return res.status(400).json({ message: 'invalid email', success: false });
+  }
+
   // 3. find user from db based on email
   // 4. validate user
   // 5. generate random token
