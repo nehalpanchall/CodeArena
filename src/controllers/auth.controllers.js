@@ -246,12 +246,23 @@ const forgotPassword = async (req, res) => {
     return res.status(400).json({ message: 'invalid email', success: false });
   }
 
-  // 3. find user from db based on email
-  // 4. validate user
-  // 5. generate random token
-  // 6. store token in db
-  // 7. send token to user via email
-  // 8. return success response
+  try {
+    // 3. find user from db based on email
+    const user = await prisma.user.findUnique({ where: { email } });
+
+    // 4. validate user
+    if (!user) {
+      return res.status(400).json({
+        message: 'user does not exist',
+        success: false,
+      });
+    }
+
+    // 5. generate random token
+    // 6. store token in db
+    // 7. send token to user via email
+    // 8. return success response
+  } catch (error) {}
 };
 
 export {
