@@ -274,6 +274,25 @@ const forgotPassword = async (req, res) => {
     });
 
     // 7. send token to user via email
+    const transporter = nodemailer.createTransport({
+      host: process.env.MAILTRAP_HOST,
+      port: process.env.MAILTRAP_PORT,
+      secure: false, // true for port 465, false for other ports
+      auth: {
+        user: process.env.MAILTRAP_USER,
+        pass: process.env.MAILTRAP_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.NODEMAIL_SENDER, // sender address
+      to: user.email, // list of receivers
+      subject: 'Reset Password! ✔', // Subject line
+      text: `Hello ${user.name}, Welcome to codearena portal \n \n Please click the given link to reset your password: ${process.env.BASE_URL}/auth/v1/api/resetpassword/${token}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
     // 8. return success response
   } catch (error) {}
 };
