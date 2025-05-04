@@ -268,6 +268,11 @@ const forgotPassword = async (req, res) => {
     }
 
     // 6. store token in db
+    await prisma.user.update({
+      where: { email },
+      data: { passwordResetToken: token },
+    });
+
     // 7. send token to user via email
     // 8. return success response
   } catch (error) {}
