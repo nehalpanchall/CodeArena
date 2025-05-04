@@ -216,6 +216,8 @@ const userProfile = async (req, res) => {
 
 const userLogout = async (req, res) => {
   // 1. extract data from req.user
+  const { id } = req.user;
+
   // 2. get the user from id
   // 3. validate user
   // 4. clear cookie
