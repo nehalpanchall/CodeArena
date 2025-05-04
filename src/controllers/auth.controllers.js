@@ -259,6 +259,14 @@ const forgotPassword = async (req, res) => {
     }
 
     // 5. generate random token
+    const token = crypto.randomBytes(16).toString('hex');
+
+    if (!token) {
+      return res
+        .status(400)
+        .json({ message: 'fail to generate token', success: false });
+    }
+
     // 6. store token in db
     // 7. send token to user via email
     // 8. return success response
