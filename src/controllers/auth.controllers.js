@@ -231,6 +231,9 @@ const userLogout = async (req, res) => {
     res.clearCookie('jwtToken', { httpOnly: true });
 
     // 5. return success response
+    return res
+      .status(200)
+      .json({ message: 'user logged out successfully', success: true });
   } catch (error) {}
 };
 
