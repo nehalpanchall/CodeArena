@@ -223,6 +223,10 @@ const userLogout = async (req, res) => {
     const user = await prisma.user.findFirst({ where: { id } });
 
     // 3. validate user
+    if (!user) {
+      return res.status(400).json({ message: 'invalid user', success: false });
+    }
+
     // 4. clear cookie
     // 5. return success response
   } catch (error) {}
