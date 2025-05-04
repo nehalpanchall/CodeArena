@@ -218,10 +218,14 @@ const userLogout = async (req, res) => {
   // 1. extract data from req.user
   const { id } = req.user;
 
-  // 2. get the user from id
-  // 3. validate user
-  // 4. clear cookie
-  // 5. return success response
+  try {
+    // 2. get the user from id
+    const user = await prisma.user.findFirst({ where: { id } });
+
+    // 3. validate user
+    // 4. clear cookie
+    // 5. return success response
+  } catch (error) {}
 };
 
 export {
