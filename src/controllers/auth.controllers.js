@@ -237,7 +237,16 @@ const userLogout = async (req, res) => {
   } catch (error) {}
 };
 
-const forgotPassword = async (req, res) => {};
+const forgotPassword = async (req, res) => {
+  // 1. extract email from body
+  // 2. validate email
+  // 3. find user from db based on email
+  // 4. validate user
+  // 5. generate random token
+  // 6. store token in db
+  // 7. send token to user via email
+  // 8. return success response
+};
 
 export {
   userRegistration,
