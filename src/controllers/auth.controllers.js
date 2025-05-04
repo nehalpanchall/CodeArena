@@ -228,6 +228,8 @@ const userLogout = async (req, res) => {
     }
 
     // 4. clear cookie
+    res.clearCookie('jwtToken', { httpOnly: true });
+
     // 5. return success response
   } catch (error) {}
 };
