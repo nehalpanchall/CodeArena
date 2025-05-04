@@ -195,7 +195,7 @@ const userProfile = async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .json({ message: 'user fond found', success: false });
+        .json({ message: 'user not found', success: false });
     }
   } catch (error) {}
 };
