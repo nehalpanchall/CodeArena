@@ -197,6 +197,20 @@ const userProfile = async (req, res) => {
         .status(400)
         .json({ message: 'user not found', success: false });
     }
+
+    // 5. return success message with data
+    return res.status(200).json({
+      message: 'user profile info',
+      success: true,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+      },
+    });
   } catch (error) {}
 };
 
