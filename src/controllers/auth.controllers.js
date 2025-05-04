@@ -214,7 +214,13 @@ const userProfile = async (req, res) => {
   } catch (error) {}
 };
 
-const userLogout = async (req, res) => {};
+const userLogout = async (req, res) => {
+  // 1. extract data from req.user
+  // 2. get the user from id
+  // 3. validate user
+  // 4. clear cookie
+  // 5. return success response
+};
 
 export {
   userRegistration,
