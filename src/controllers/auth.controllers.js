@@ -294,6 +294,10 @@ const forgotPassword = async (req, res) => {
     await transporter.sendMail(mailOptions);
 
     // 8. return success response
+    return res.status(200).json({
+      message: 'password reset link has been sent to your registered email',
+      success: true,
+    });
   } catch (error) {}
 };
 
