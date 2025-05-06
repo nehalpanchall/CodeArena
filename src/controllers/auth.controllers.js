@@ -362,7 +362,10 @@ const resetPassword = async (req, res) => {
   });
 
   // 10. return success message
-  return res.json({});
+  return res.status(200).json({
+    message: 'your password has been reset successfully',
+    success: true,
+  });
 };
 
 export {
