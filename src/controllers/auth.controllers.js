@@ -348,6 +348,9 @@ const resetPassword = async (req, res) => {
   }
 
   // 7. hashed new password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
   // 8. update user with new hashed password and clear token and expiry
   // 10. return success message
   return res.json({});
