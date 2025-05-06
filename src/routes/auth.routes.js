@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   forgotPassword,
+  resetPassword,
   userLogin,
   userLogout,
   userProfile,
@@ -20,5 +21,6 @@ authRoute.get('/profile', isLoggedIn, userProfile);
 authRoute.get('/logout', isLoggedIn, userLogout);
 
 authRoute.post('/forgotpassword', forgotPassword);
+authRoute.post('/resetpassword/:token', resetPassword);
 
 export default authRoute;
