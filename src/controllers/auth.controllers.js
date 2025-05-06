@@ -352,6 +352,15 @@ const resetPassword = async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   // 8. update user with new hashed password and clear token and expiry
+  await prisma.user.update({
+    where: { id: user.id }, // unique
+    data: {
+      password: hashedPassword,
+      passwordResetToken: null,
+      passwordResetExpiry: null,
+    },
+  });
+
   // 10. return success message
   return res.json({});
 };
