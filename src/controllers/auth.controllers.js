@@ -312,6 +312,17 @@ const resetPassword = async (req, res) => {
   const { password, confirmPassword } = req.body;
 
   // 3. validate token and passwords
+  if (!token) {
+    return res.status(400).json({ message: 'invalid token', success: false });
+  }
+
+  if (!password || !confirmPassword) {
+    return res.status(400).json({
+      message: 'password and confirm password both are required',
+      success: false,
+    });
+  }
+
   // 4. match passwords
   // 5. find user based on token and reset expiry
   // 6. validate user
