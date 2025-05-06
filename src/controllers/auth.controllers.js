@@ -267,10 +267,13 @@ const forgotPassword = async (req, res) => {
         .json({ message: 'fail to generate token', success: false });
     }
 
-    // 6. store token in db
+    // 6. store token in db and set passwordResetExpiry
     await prisma.user.update({
       where: { email },
-      data: { passwordResetToken: token },
+      data: {
+        passwordResetToken: token,
+        passwordResetExpiry: String(Date.now() + 10 * 60 * 1000),
+      },
     });
 
     // 7. send token to user via email
