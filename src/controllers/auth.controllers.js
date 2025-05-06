@@ -304,7 +304,17 @@ const forgotPassword = async (req, res) => {
   } catch (error) {}
 };
 
-const resetPassword = async (req, res) => {};
+const resetPassword = async (req, res) => {
+  // 1. extract token from params
+  // 2. extract passwords from body
+  // 3. validate token and passwords
+  // 4. match passwords
+  // 5. find user based on token and reset expiry
+  // 6. validate user
+  // 7. hashed new password
+  // 8. update user with new hashed password and clear token and expiry
+  // 10. return success message
+};
 
 export {
   userRegistration,
