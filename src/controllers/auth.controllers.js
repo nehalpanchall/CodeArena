@@ -306,7 +306,11 @@ const forgotPassword = async (req, res) => {
 
 const resetPassword = async (req, res) => {
   // 1. extract token from params
+  const { token } = req.params;
+
   // 2. extract passwords from body
+  const { password, confirmPassword } = req.body;
+
   // 3. validate token and passwords
   // 4. match passwords
   // 5. find user based on token and reset expiry
