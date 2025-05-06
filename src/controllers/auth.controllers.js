@@ -324,6 +324,13 @@ const resetPassword = async (req, res) => {
   }
 
   // 4. match passwords
+  if (password !== confirmPassword) {
+    return res.status(400).json({
+      message: 'password and confirm password should be matched',
+      success: false,
+    });
+  }
+
   // 5. find user based on token and reset expiry
   // 6. validate user
   // 7. hashed new password
