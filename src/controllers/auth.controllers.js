@@ -332,10 +332,25 @@ const resetPassword = async (req, res) => {
   }
 
   // 5. find user based on token and reset expiry
+  const user = await prisma.user.findFirst({
+    where: {
+      passwordResetToken: token,
+      passwordResetExpiry: { gte: String(Date.now()) },
+    },
+  });
+
   // 6. validate user
+  if (!user) {
+    return res.status(400).json({
+      message: 'user not found',
+      success: false,
+    });
+  }
+
   // 7. hashed new password
   // 8. update user with new hashed password and clear token and expiry
   // 10. return success message
+  return res.json({});
 };
 
 export {
