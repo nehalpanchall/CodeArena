@@ -24,6 +24,8 @@ const isLoggedIn = async (req, res, next) => {
 
 export const isAdmin = async (req, res, next) => {
   // 1. get the userId from req.user
+  const { id } = req.user;
+
   // 2. get the user from db based on userId
   // 3. validate the user
   // 4. check user role is ADMIN
