@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import prisma from '../../prisma/index.js';
+import { Role } from '../generated/prisma/index.js';
 
 const isLoggedIn = async (req, res, next) => {
   try {
@@ -26,10 +27,18 @@ export const isAdmin = async (req, res, next) => {
   // 1. get the userId from req.user
   const { id } = req.user;
 
-  // 2. get the user from db based on userId
-  // 3. validate the user
-  // 4. check user role is ADMIN
-  // 5. next()
+  try {
+    // 2. get the user from db based on userId
+    const user = await prisma.user.findUnique({ where: { id } });
+
+    // 3. validate the user
+    if (!user) {
+      return res.status(400).json({ message: 'invalid user', success: false });
+    }
+
+    // 4. check user role is ADMIN
+    // 5. next()
+  } catch (error) {}
 };
 
 export default isLoggedIn;
