@@ -37,7 +37,14 @@ export const isAdmin = async (req, res, next) => {
     }
 
     // 4. check user role is ADMIN
+    if (user.role !== 'ADMIN' || user.role === 'USER') {
+      return res
+        .status(400)
+        .json({ message: 'access denied: Admin only', success: false });
+    }
+
     // 5. next()
+    next();
   } catch (error) {}
 };
 
