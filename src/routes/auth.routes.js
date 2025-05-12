@@ -9,7 +9,7 @@ import {
   userVerification,
 } from '../controllers/auth.controllers.js';
 
-import isLoggedIn from '../middlewares/isLoggedIn.middleware.js';
+import isLoggedIn from '../middlewares/auth.middlewares.js';
 
 const authRoute = express.Router();
 
