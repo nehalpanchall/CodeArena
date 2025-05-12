@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import authRoute from './src/routes/auth.routes.js';
+import problemsRoute from './src/routes/problems.routes.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth/v1/api', authRoute);
+app.use('/api/v1/problems', problemsRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
