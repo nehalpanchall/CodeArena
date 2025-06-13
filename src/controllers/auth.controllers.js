@@ -130,7 +130,7 @@ const userLogin = async (req, res) => {
     }
 
     // 4. check password is correct
-    const isMatch = bcrypt.compare(password, existingUser.password);
+    const isMatch = await bcrypt.compare(password, existingUser.password);
 
     if (!isMatch) {
       return res
